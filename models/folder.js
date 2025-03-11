@@ -10,7 +10,8 @@ const AnswerFolder = sequelize.define("AnswerFolder", {
     { tableName: "answer_folders" });
 
 Topic.hasMany(AnswerFolder, { foreignKey: "topic_id", sourceKey: "id" })
-AnswerFolder.hasOne(FlashCard, {foreignKey:"folder_id",sourceKey:"id"})
+AnswerFolder.hasMany(FlashCard, {foreignKey:"folder_id",sourceKey:"id"})
+FlashCard.belongsTo(AnswerFolder, { foreignKey: "folder_id" });
 // AnswerFolder.hasMany(FlashCard,{foreignKey:"folder_id",sourceKey:"id"})
 export { AnswerFolder }
 
